@@ -1,13 +1,15 @@
 import { Outlet, Link } from "react-router-dom";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../shared/Header";
+import Footer from "../shared/Footer";
 
 const Container = () => {
   return (
     <>
+    <div className="container-page container">
       <Header />
       <Outlet />
       <Footer />
+    </div>
 
       
     </>
