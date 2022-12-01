@@ -1,13 +1,19 @@
 import Carousel from 'react-bootstrap/Carousel';
 
+const banner1 = 'Proyecto4-HornoDeLe-a/img/banner1.jpg'
+const banner2 = 'Proyecto4-HornoDeLe-a/img/banner2.jpg'
+const banner3 = 'Proyecto4-HornoDeLe-a/img/banner3.jpg'
 const Carrusel = () => {
   return (
     <Carousel>
       <Carousel.Item>
         <img
-          className="d-block"
-          src="https://picsum.photos/id/237/200/300"
+          className="d-block width:150px"
+          src={banner1}
           alt="First slide"
+          width={'100%'}
+          height={'50%'}
+          
         />
         <Carousel.Caption>
           <h3>First slide label</h3>
@@ -16,9 +22,12 @@ const Carrusel = () => {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block"
-          src="https://picsum.photos/id/237/200/300"
+          className="d-block img-responsive"
+          src={banner2}
           alt="Second slide"
+          width={'100%'}
+          height={'50%'}
+          
         />
 
         <Carousel.Caption>
@@ -28,9 +37,11 @@ const Carrusel = () => {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block"
-          src="https://picsum.photos/id/237/200/300"
+          className="d-block img-responsive"
+          src={banner3}
           alt="Third slide"
+          width={'100%'}
+          height={'50%'}
         />
 
         <Carousel.Caption>
