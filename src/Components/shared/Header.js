@@ -1,26 +1,28 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-
-
+import Container from "react-bootstrap/Container";
+import { LinkContainer } from "react-router-bootstrap";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 const Header = () => {
   return (
-   
-    <Navbar bg="dark" variant='dark'>
+    <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="/">Horno de Leña</Navbar.Brand>
+        <LinkContainer to= "/">
+          <Navbar.Brand>Horno de Leña</Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/">Inicio</Nav.Link>      
-            <Nav.Link href="contact">Contacto</Nav.Link> 
-            <Nav.Link href="dirección">Dirección</Nav.Link>                    
+          <Nav className="me-auto">          
+          <LinkContainer to= "/contact">
+              <Nav.Link >Contacto</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to= "/dirección">
+              <Nav.Link >Dirección</Nav.Link>
+          </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-  };
-  export default Header;
-  
+};
+export default Header;
