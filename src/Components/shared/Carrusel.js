@@ -3,17 +3,13 @@ import { db } from "./../../config/firebase";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { useState, useEffect } from "react";
 
-const banner1 = "Proyecto4-HornoDeLe-a/img/banner1.jpg";
-const banner2 = "Proyecto4-HornoDeLe-a/img/banner2.jpg";
-const banner3 = "Proyecto4-HornoDeLe-a/img/banner3.jpg";
-
 const Carrusel = () => {
-  const [newsSite, setNewsSite] = useState([]);
+  const [newssSite, setnewssSite] = useState([]);
 
   useEffect(() => {
     const q = query(collection(db, "itemsCarrusel"));
     onSnapshot(q, (querySnapshot) => {
-      setNewsSite(
+      setnewssSite(
         querySnapshot.docs.map((item) => ({
           id: item.id,
           data: item.data(),
@@ -22,24 +18,23 @@ const Carrusel = () => {
     });
   }, []);
 
-  console.log(newsSite)
+  console.log(newssSite)
 
   return (
+    <div className="container">
     <Carousel>
-      {newsSite.map((items) => (
+      {newssSite.map((items) => (
         <Carousel.Item>
 
           <img className="d-block" src= {items.data.img} alt="First Slide" />
-          <Carousel.Caption>
-            <h3>{items.data.title}</h3>
-            <p>{items.data.description}</p>
-          </Carousel.Caption>
+          
 
         </Carousel.Item>
 
       ))}
       
     </Carousel>
+    </div>
   );
 };
 export default Carrusel;

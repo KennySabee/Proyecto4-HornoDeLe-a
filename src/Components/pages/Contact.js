@@ -31,7 +31,7 @@ const Formulario = () => {
       <Form.Group className="mb-3" controlId="formBasicName">
         <Form.Label>Nombre</Form.Label>
         <Form.Control
-          onchange={handleChange}
+          onChange={handleChange}
           name="nameForm"
           type="text"
           placeholder="Escriba su nombre"
@@ -41,7 +41,7 @@ const Formulario = () => {
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Correo</Form.Label>
         <Form.Control
-          onchange={handleChange}
+          onChange={handleChange}
           name="emailForm"
           type="email"
           placeholder="Correo"
@@ -51,7 +51,7 @@ const Formulario = () => {
       <Form.Group className="mb-3" controlId="formBasicDescription">
         <Form.Label>Comentario</Form.Label>
         <Form.Control
-          onchange={handleChange}
+          onChange={handleChange}
           name="emailDescription"
           type="text"
           placeholder="Comentario"

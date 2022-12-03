@@ -12,7 +12,7 @@ const Header = () => {
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">          
+          <Nav className="me-auto">
           <LinkContainer to= "/contact">
               <Nav.Link >Contacto</Nav.Link>
           </LinkContainer>
@@ -23,6 +23,7 @@ const Header = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    
   );
 };
 export default Header;

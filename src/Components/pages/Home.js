@@ -5,8 +5,12 @@ import Jumbotron from "../shared/Jumbotron";
 const Home = () => {
     return  (
       <>
-        <Jumbotron />
         <Carrusel />
+        <br />
+        <div className="jumbotron">
+        <Jumbotron />
+        </div>
+        
       </>
     );
   };
