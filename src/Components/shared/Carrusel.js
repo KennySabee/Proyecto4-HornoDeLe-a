@@ -1,58 +1,45 @@
-import Carousel from 'react-bootstrap/Carousel';
+import Carousel from "react-bootstrap/Carousel";
+import { db } from "./../../config/firebase";
+import { collection, onSnapshot, query } from "firebase/firestore";
+import { useState, useEffect } from "react";
 
-const banner1 = 'Proyecto4-HornoDeLe-a/img/banner1.jpg'
-const banner2 = 'Proyecto4-HornoDeLe-a/img/banner2.jpg'
-const banner3 = 'Proyecto4-HornoDeLe-a/img/banner3.jpg'
+const banner1 = "Proyecto4-HornoDeLe-a/img/banner1.jpg";
+const banner2 = "Proyecto4-HornoDeLe-a/img/banner2.jpg";
+const banner3 = "Proyecto4-HornoDeLe-a/img/banner3.jpg";
+
 const Carrusel = () => {
+  const [newsSite, setNewsSite] = useState([]);
+
+  useEffect(() => {
+    const q = query(collection(db, "itemsCarrusel"));
+    onSnapshot(q, (querySnapshot) => {
+      setNewsSite(
+        querySnapshot.docs.map((item) => ({
+          id: item.id,
+          data: item.data(),
+        }))
+      );
+    });
+  }, []);
+
+  console.log(newsSite)
+
   return (
     <Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block width:150px"
-          src={banner1}
-          alt="First slide"
-          width={'100%'}
-          height={'50%'}
-          
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block img-responsive"
-          src={banner2}
-          alt="Second slide"
-          width={'100%'}
-          height={'50%'}
-          
-        />
+      {newsSite.map((items) => (
+        <Carousel.Item>
 
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block img-responsive"
-          src={banner3}
-          alt="Third slide"
-          width={'100%'}
-          height={'50%'}
-        />
+          <img className="d-block" src= {items.data.img} alt="First Slide" />
+          <Carousel.Caption>
+            <h3>{items.data.title}</h3>
+            <p>{items.data.description}</p>
+          </Carousel.Caption>
 
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
+        </Carousel.Item>
+
+      ))}
+      
     </Carousel>
   );
-  };
-  export default Carrusel;
-  
+};
+export default Carrusel;
